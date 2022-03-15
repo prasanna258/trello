@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "5a334998-88a6-4a34-8eb0-9e9cedc799c3",
+		"name": "trello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"key\", \"61764e2df13762a7297ed49a514a5792\");\r",
+							"pm.globals.set(\"token1\", \"9cd5049a4ed48dfca4ce6de3effe4baf507d42f3f31ca4196690dd99cc711f95\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/BU4Gb7Ay?key=61764e2df13762a7297ed49a514a5792&token=9cd5049a4ed48dfca4ce6de3effe4baf507d42f3f31ca4196690dd99cc711f95",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"BU4Gb7Ay"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "61764e2df13762a7297ed49a514a5792"
+						},
+						{
+							"key": "token",
+							"value": "9cd5049a4ed48dfca4ce6de3effe4baf507d42f3f31ca4196690dd99cc711f95"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const Data = pm.response.json();\r",
+							"var Id1 = Data.id;\r",
+							"pm.environment.set(\"Id\",Id1);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/?name=prasanna&key={{key}}&token={{token1}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "prasanna"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token1}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/{{Id}}?key=61764e2df13762a7297ed49a514a5792&token=9cd5049a4ed48dfca4ce6de3effe4baf507d42f3f31ca4196690dd99cc711f95",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{Id}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "61764e2df13762a7297ed49a514a5792"
+						},
+						{
+							"key": "token",
+							"value": "9cd5049a4ed48dfca4ce6de3effe4baf507d42f3f31ca4196690dd99cc711f95"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
